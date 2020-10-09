@@ -1,0 +1,29 @@
+<head>
+  <script>
+    var originX=0;
+    var originY=0;
+
+    function cnvs_setOrigin(e) {
+      originX=e.clientX;
+      originY=e.clientY;
+    }
+
+    function cnvs_getCoordinates(e) {
+      x=e.clientX*(25500/originX);
+      y=e.clientY*(25500/originY);
+      document.getElementById("xycoordinates").innerHTML="Origin: (" + originX + "," + originY + ") Coordinates: (" + Math.round(x) + "," + Math.round(y) + ")";
+    }
+
+    function cnvs_clearCoordinates() {
+      document.getElementById("xycoordinates").innerHTML="";
+    }
+  </script>
+</head>
+<body style="margin:0px;">
+  <div id="coordiv" style="float:left;border:1px solid #c3c3c3"
+                    onmousemove="cnvs_getCoordinates(event)" onmouseout="cnvs_clearCoordinates()" onclick="cnvs_setOrigin(event)">
+    <img src="map.jpg"/>
+  </div>
+  <br\>
+  <div id="xycoordinates" style="display:inline-block">move mouse</div>
+</body>
